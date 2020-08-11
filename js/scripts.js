@@ -4,15 +4,16 @@ $(function() {
             opacity: 1,
             height: "toggle"
         }, 300, function() {
-            $(".header div nav ul").toggleClass("items") ;
+            // $(".header div nav ul").toggleClass("items") ;
+            $(".hamburger").toggleClass("is-active")
         });
     });
 
-    $('.li-option').click(function() {
-        $('ul').css('display', 'none')
-    })
+  $('.li-option').click(function() {
+    $('ul').css('display', 'none')
+    $(".hamburger").toggleClass("is-active")
+  })
 }) ;
-
 
 let prevScrollpos = window.pageYOffset;
 window.onscroll = function() {

@@ -1,7 +1,50 @@
+:root {
+    /* Colors */
+    --off-white: #F9F9FA;
+    --primary: var(--purple);
+    --secondary: var(--off-white);
+    --primary-light: var(--purple-lighter);
+    --primary-dark: var(--purple-darker);
+    --primary-gradient: linear-gradient(45deg, var(--primary), var(--primary-dark));
+
+    /* General Settings */
+    --border-rad: 5px;
+    --purple-darker: #5C2A9D;
+    --purple-lighter: #6f42c1;
+    --purple-light-trans: #b993ff7a;
+    --purple-darker: #4d2596;
+    --transition-normal: ease-in-out all .5s;
+    --transition-quick: ease-in-out all .35s;
+    --index-sticky: 9;
+    --index-nav: 8;
+    --index-cmax: 7;
+    /* ... fill as needed ... */
+    --index-content: 1;
+    --index-behind: 0;
+
+    /* Font Sizes */
+    --font-h1: 30px;
+    --font-h2: 26px;
+    --font-h3: 22px;
+    --font-h4: 18px;
+    --font-h5: 14px;
+    --font-h6: 12px;
+
+    --font-xl: 20px;
+    --font-large: 17px;
+    --font-base: 15px;
+    --font-sm: 12px;
+    --font-xs: 8px;
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.secondary {
+    background-color: var(--secondary);
 }
 
 body{
@@ -9,7 +52,7 @@ body{
     font-family: var(-font-family-sans-serrif);
 }
 
-.header{
+/* .header{
     display: flex;
     background: #5C2A9D;
     position: fixed;
@@ -20,6 +63,21 @@ body{
     width: 100% !important;
     padding: 10px;
     transition: top .5s;    
+} */
+
+.header {
+    display: flex;
+    background: url('/img/pattern-transparent.png'), var(--primary-gradient);
+    background-blend-mode: multiply;
+    position: fixed;
+    align-items: center;
+    height: auto;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    padding: 10px;
+    transition: var(--transition-normal);
+    z-index: var(--index-nav);
 }
 
 .logo{
@@ -37,12 +95,26 @@ nav li{
     font-weight: 400;
 }
 
+
+nav a,
+nav a:hover {
+    text-decoration: none;
+    color: var(--secondary);
+    transition: var(--transition-quick);
+}
+
+nav a {
+    font-size: var(--font-base);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
 .spacer{
     flex-grow: 1;
 }
 
 .hamburger{
-    display: none;
+    display: none !important;
 }
 
 .logo svg{
@@ -50,44 +122,47 @@ nav li{
     height: 50px;
 }
 
-a {
+/* a {
     color: #fff;
     font-size: 1.2rem;
 }
 
 a:hover{
     text-decoration: none;
-}
+} */
 
 
 @media screen and (max-width: 650px){
-    #hamburger{
-        display: block;
+    .hamburger{
+        display: block !important;
         fill: #fff;
+    }
+
+    .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+        background: #fff !important;
     }
 
      .header div nav ul{
         display: none;
-        background: rgb(92,42,157);
+        /* background: rgb(92,42,157); */
+        background: url('/img/pattern-transparent.png'), var(--primary-gradient);
+        background-blend-mode: multiply;
         position: absolute;
         top: 70px;
         right: 0;
         left: 0;
-        flex-direction: column; 
-        align-items: center;
-        justify-content: center; 
         padding: 30px;
         text-align: center;
-        animation-name: scroll-down;
-        animation-duration: 1s;
-        height: 255px;
+        /* animation-name: scroll-down;
+        animation-duration: 1s; */
+        height: 92vh;
     }
 
-    .header div nav ul.items{
+    /* .header div nav ul.items{
         display: flex;
         flex-direction: column;
         align-items: center !important;
-    }
+    } */
 
     @keyframes scroll-down {
         from {
@@ -110,15 +185,19 @@ a:hover{
         }
     } 
 
+    a.li-option {
+        font-size: 30px;
+    }
+
     .header div nav ul li{
-        margin: 10px auto;
+        margin: 70px auto;
         animation-name: example;
         animation-duration: 2s;
     }
     
     a {
-        color: #fff;
         text-decoration: none;
+        color: #fff;
         cursor: default;
     }
 
@@ -400,20 +479,27 @@ a:hover{
         height: 450px;
     }
 
-    nav li a{
-        font-size:1.4rem;
-    }
-
     nav ul{
         margin-top: 10px;
     }
 
-    nav ul li a:hover{
-        background: #A458DE;
-        border-radius: 20px;
-        color: #fff;
-        padding:5px 20px;
+    nav a {
+        padding: 8px 15px;
     }
+
+    nav a:hover {
+        background: var(--primary-light);
+        border-radius: var(--border-rad);
+        padding: 10px 20px;
+        box-shadow:
+        inset 0 0 10px var(--purple-light-trans),
+        inset 0 -15px 15px var(--purple-light-trans),
+        inset 0 -5px 5px var(--purple-light-trans),
+        inset 0 0 1px 1px var(--off-white),
+        0 0 10px var(--purple-darker),
+        0 0 20px rgba(0, 0, 0, 0.25);
+    }
+
 
     .header div nav ul{
         display: flex !important;
@@ -644,7 +730,7 @@ a:hover{
     .footer-like{
         position: relative;
         padding: 100px 20px;
-        /* background: url('/img/map-\(2\).jpg'); */
+        background: url('/img/map-\(2\).jpg');
         background-position: center;
         background-size: cover;
     }
@@ -950,3 +1036,4 @@ svg{
     font-size: 1.2rem;
     margin-top: 7%;
 }
+
